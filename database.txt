@@ -1,0 +1,39 @@
+--TABLE CAPSTONE PROJECT MANAGEMENT IMAGES
+
+CREATE TABLE `users` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `pass_word` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `email` (`email`)
+);
+
+DROP TABLE images;
+
+CREATE TABLE `images` (
+  `image_id` int NOT NULL AUTO_INCREMENT,
+  `image_name` varchar(255) DEFAULT NULL,
+  `image` TEXT DEFAULT NULL,
+  `description` text,
+  `is_save` BOOLEAN NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`image_id`),
+  KEY `user_id` (`user_id`),
+  foreign key (user_id) references users(user_id)
+);
+
+DROP TABLE images_comment;
+
+CREATE TABLE `images_comment` (
+  `comment_id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `image_id` int DEFAULT NULL,
+  `date_create` datetime DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`comment_id`),
+  KEY `user_id` (`user_id`),
+  KEY `image_id` (`image_id`),
+  foreign key (user_id) references users(user_id),
+  foreign key (image_id) references images(image_id)
+) ;
