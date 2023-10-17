@@ -3,7 +3,7 @@ import { TOKEN, USER_LOGIN } from './constantsUtils';
 
 export const BASE_URL = 'http://localhost:8082';
 
-const options = {
+export const options = {
     params: {
         maxResults: 50,
     },

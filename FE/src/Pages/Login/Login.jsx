@@ -1,6 +1,6 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
-import { login } from '../../Utils/apiUtils';
+import { login, options } from '../../Utils/apiUtils';
 import { TOKEN, USER_LOGIN } from '../../Utils/constantsUtils';
 
 export default function Login() {
@@ -35,6 +35,7 @@ export default function Login() {
                                     alert('Đăng Nhập Thành Công!')
                                     localStorage.setItem(USER_LOGIN,JSON.stringify(user));
                                     localStorage.setItem(TOKEN,JSON.stringify(rs.token));
+                                    options.headers.token(rs.token);
                                     navigate('/')
                                 }
                             })
