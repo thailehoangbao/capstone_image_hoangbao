@@ -123,6 +123,11 @@ const getListImageCreated = async (req, res) => {
 
 const deleteImage = async (req, res) => {
     let {image_id} = req.params;
+    await model.images_comment.destroy({
+        where: {
+            image_id
+        }
+    })
     await model.images.destroy({
         where: {
             image_id
